@@ -59,9 +59,11 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
     if(e.key === 'ArrowLeft'){
       if(!isRotating) setIsRotating(true);
       isBalloonRef.current.rotation.z += 0.01 * Math.PI;
+      rotationSpeed.current = 0.007;
     } else if(e.key === 'ArrowRight'){
       if(!isRotating) setIsRotating(true);
       isBalloonRef.current.rotation.z -= 0.01 * Math.PI;
+      rotationSpeed.current = -0.007;
     }
   }
 
@@ -78,8 +80,8 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
       if(Math.abs(rotationSpeed.current) < 0.001){
         rotationSpeed.current = 0;
       }
-
       // isBalloonRef.current.rotation.z += rotationSpeed.current;
+      
     } else {
       const rotation = isBalloonRef.current.rotation.z;
 
