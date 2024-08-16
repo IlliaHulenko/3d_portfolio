@@ -23,9 +23,10 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
   const dampingFactor = useRef(0.95);
 
 
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF(balloonScene)
-  const { actions } = useAnimations(animations, group)
+  // const group = useRef()
+  const { nodes, materials, animations } = useGLTF(balloonScene);
+
+  const { actions } = useAnimations(animations, isBalloonRef)
 
   const handlePointerDown = (e) => {
     e.stopPropagation();
@@ -88,19 +89,19 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
       const normalizedRotation =
         ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
 
-      // Set the current stage based on the island's orientation
+      // Set the current stage based on the baloon's orientation
       switch (true) {
         case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
-          setCurrentStage(4);
+          setCurrentStage(1);
           break;
         case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
-          setCurrentStage(3);
-          break;
-        case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
           setCurrentStage(2);
           break;
+        case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
+          setCurrentStage(3);
+          break;
         case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
-          setCurrentStage(1);
+          setCurrentStage(4);
           break;
         default:
           setCurrentStage(null);
@@ -127,7 +128,7 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
   
   return (
-    <a.group ref={isBalloonRef} {...props}>      
+    <group ref={isBalloonRef} {...props}>      
       <mesh
         name="balloon"
       />
@@ -162,7 +163,7 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
           />
         </mesh>
       </mesh>              
-    </a.group>
+    </group>
   )
 }
 
