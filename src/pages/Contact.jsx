@@ -1,5 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { Suspense, useRef, useState } from 'react';
 import emailjs from "@emailjs/browser";
+import { Canvas } from '@react-three/fiber';
+import Pet from '../models/Pet.jsx';
+import Loader from '../components/Loader.jsx';
+import Indigo from '../models/Indigo.jsx';
 
 const Contact = () => {
 
@@ -7,18 +11,21 @@ const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [isLoading, setIsLoading] = useState(false)
 
+  const [currentAnimation, setCurrentAnimation] = useState('Mollie|NewBirdRun')
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value})
   };
 
-  const handleFocus = () => {};
+  const handleFocus = () => setCurrentAnimation('Mollie|NewBirdCrawl');
 
-  const handleBlur = () => {};
+  const handleBlur = () => setCurrentAnimation('Mollie|BirdJumpscare');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+    setCurrentAnimation('Mollie|MollieJump');
+
     emailjs.send(
       import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
       import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
@@ -34,11 +41,16 @@ const Contact = () => {
       setIsLoading(false);
       //TODO: add success message
       //TODO: Hide an alert
-
-      setForm({ name: '', email: '', message: '' });
+      
+      setTimeout(() => {
+        setCurrentAnimation('Mollie|NewBirdRun');
+        setForm({ name: '', email: '', message: '' });
+      }, [3000]);
     }).catch((error) => {
       setIsLoading(false);
+      setCurrentAnimation('Mollie|MollieLand');
       console.log(error);
+
       //TODO: Show error message
     })
   };
@@ -106,10 +118,45 @@ const Contact = () => {
           >
             {isLoading ? 'Sending...' : 'Send Message'}
           </button>
-
         </form>
+      </div>
+      
+      <div
+        className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'
+      >
+        <Canvas
+          camera = {{
+            position: [0, 0, 5],
+            fov: 75,
+            near: 0.1,
+            far: 1000
+          }}
+        >
+          {/* <directionalLight 
+            intensity={3.5} 
+            position={[7, 3, 1]} 
+          />
+          <ambientLight intensity={5}/> */}
+          <directionalLight 
+            intensity={2.5} 
+            position={[7, 3, 1]} 
+          />
+          <ambientLight intensity={1}/>
+          <Suspense fallback={<Loader />}>
+            {/* <Pet 
+              position={[0.2, -1.5, 1]}
+              rotation={[12.63, 22, 0]}
+              scale={[0.3, 0.3, 0.3]}
+            /> */}
+            <Indigo
+              currentAnimation={currentAnimation}
+              position={[0, -1.5, 1]}
+              rotation={[2, 22, 3]}
+              scale={[0.023, 0.023, 0.023]}
+            />
+          </Suspense>
 
-
+        </Canvas>
       </div>
     </section>
   )
