@@ -1,5 +1,7 @@
 import React, { Suspense, useRef, useState } from 'react';
 import emailjs from "@emailjs/browser";
+import useAlert from '../hooks/useAlert.js';
+import Alert from '../components/Alert.jsx';
 import { Canvas } from '@react-three/fiber';
 import Pet from '../models/Pet.jsx';
 import Loader from '../components/Loader.jsx';
@@ -8,10 +10,11 @@ import Indigo from '../models/Indigo.jsx';
 const Contact = () => {
 
   const formRef = useRef(null);
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [isLoading, setIsLoading] = useState(false)
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentAnimation, setCurrentAnimation] = useState('Mollie|NewBirdRun');
 
-  const [currentAnimation, setCurrentAnimation] = useState('Mollie|NewBirdRun')
+  const {alert, showAlert, hideAlert} = useAlert();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value})
@@ -19,12 +22,14 @@ const Contact = () => {
 
   const handleFocus = () => setCurrentAnimation('Mollie|NewBirdCrawl');
 
-  const handleBlur = () => setCurrentAnimation('Mollie|BirdJumpscare');
+  const handleBlur = () => {
+    setCurrentAnimation('Mollie|NewBirdRun');    
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setCurrentAnimation('Mollie|MollieJump');
+    setCurrentAnimation('Mollie|MollieFall');
 
     emailjs.send(
       import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
@@ -39,24 +44,31 @@ const Contact = () => {
       import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
     ).then(() => {
       setIsLoading(false);
-      //TODO: add success message
-      //TODO: Hide an alert
-      
+
+      showAlert({show: true, text: 'Your message has been sent successfully', 
+        type: 'success'});
+
+      setCurrentAnimation('Mollie|MollieLand');
       setTimeout(() => {
+        hideAlert();
         setCurrentAnimation('Mollie|NewBirdRun');
         setForm({ name: '', email: '', message: '' });
-      }, [3000]);
+      }, [2000]);
     }).catch((error) => {
       setIsLoading(false);
       setCurrentAnimation('Mollie|MollieLand');
       console.log(error);
 
-      //TODO: Show error message
+      showAlert({show: true, text: "I didn't get your message, please try again", 
+        type: 'danger'});
     })
   };
   
   return (
     <section className='relative flex lg:flex-row flex-col max-container'>
+
+      {alert.show && <Alert {...alert}/>}      
+
       <div className='flex-1 min-w-[50%] flex flex-col'>
         <h1 className='head-text'>Get in Touch</h1>
 

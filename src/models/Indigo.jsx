@@ -9,7 +9,7 @@ const Indigo = ({currentAnimation, ...props}) => {
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    console.log(actions);
+    // console.log(actions);
     Object.values(actions).forEach(action => action.stop());
     
     if(actions[currentAnimation]){
