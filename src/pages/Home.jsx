@@ -12,17 +12,7 @@ const Home = () => {
 
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1);
-
-  const [ballonCurrentAnimation, setBallonCurrentAnimation] = useState('a peach')
-
-  const handleMouseMove = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    setBallonCurrentAnimation('a peach')
-  }
-
-
-
+  
   const adjustBalloonForScreenSize = () => {
     let screenScale = null; 
     let screenPosition = [0, -7, -30];    
@@ -39,12 +29,12 @@ const Home = () => {
   const adjustPlaneForScreenSize = () => {
     let screenScale, screenPosition;    
 
-    if(window.innerWidth < 768){
+    if(window.innerWidth < 760){
       screenScale = [1.5, 1.5, 1.5]
       screenPosition = [0, -1.5, 0]
     } else {
-      screenScale = [4, 4, 4]
-      screenPosition = [0, -4, -4]
+      screenScale = [3, 3, 3]
+      screenPosition = [0, -5, -4]
     }
 
     return [screenScale, screenPosition];
@@ -81,15 +71,12 @@ const Home = () => {
             isRotating={isRotating}
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
-
-            setBallonCurrentAnimation={ballonCurrentAnimation}
-            onMouseMove={handleMouseMove}
           />
 
           <Plane 
             isRotating={isRotating}
-            planeScale={planeScale}
-            planePosition={planePosition}
+            scale={planeScale}
+            position={planePosition}
             rotation={[0, 20, 0]}
           />
         </Suspense>
