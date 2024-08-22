@@ -12,7 +12,7 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
 
   const lastX = useRef(0);
   const rotationSpeed = useRef(0);
-  const dampingFactor = useRef(0.95);
+  const dampingFactor = 0.95;
 
   const [ballonCurrentAnimation, setBallonCurrentAnimation] = useState('AnimationAction');
   const group = useRef()
@@ -73,7 +73,7 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
       if(Math.abs(rotationSpeed.current) < 0.001){
         rotationSpeed.current = 0;
       }
-      // isBalloonRef.current.rotation.z += rotationSpeed.current;      
+      group.current.rotation.z += rotationSpeed.current;      
       
     } else {
       const rotation = group.current.rotation.z;       
@@ -150,9 +150,6 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
           />
           <mesh
             name="Object_8"
-            // position={[27.882, 32.903, 114.566]}
-            // rotation={[0, 0, -Math.PI / 2]}
-            // scale={100}
           />
         </mesh>
       </mesh>              

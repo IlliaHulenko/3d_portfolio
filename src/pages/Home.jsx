@@ -15,12 +15,18 @@ const Home = () => {
   
   const adjustBalloonForScreenSize = () => {
     let screenScale = null; 
-    let screenPosition = [0, -7, -30];    
+    let screenPosition = null;    
 
-    if(window.innerWidth < 768){
-      screenScale = [0.3, 0.3, 0.3]
+    if(window.innerWidth < 760){
+      screenScale = [0.5, 0.5, 0.5]
     } else {
       screenScale = [1, 1, 1]
+    }
+
+    if(window.innerWidth < 760){
+      screenPosition = [0, -3, -30];
+    } else {
+      screenPosition = [0, -5, -30];
     }
 
     return [screenScale, screenPosition];
@@ -30,7 +36,7 @@ const Home = () => {
     let screenScale, screenPosition;    
 
     if(window.innerWidth < 760){
-      screenScale = [1.5, 1.5, 1.5]
+      screenScale = [1, 1, 1]
       screenPosition = [0, -1.5, 0]
     } else {
       screenScale = [3, 3, 3]

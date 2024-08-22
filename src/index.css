@@ -325,3 +325,9 @@ body:has(.card[data-color="green"]:hover) {
     margin-bottom: 0.7rem;
   }
 }
+
+.prosjects-container{
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(#5a47ce, #232323 80%);
+}
