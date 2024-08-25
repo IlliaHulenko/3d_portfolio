@@ -1,9 +1,7 @@
 import React from 'react';
 import { atom, useAtom } from "jotai";
 
-const pictures = [
-  "DSC00680",
-  "DSC00933",
+const pictures = [  
   "DSC00966",
   "DSC00983",
   "DSC01011",
