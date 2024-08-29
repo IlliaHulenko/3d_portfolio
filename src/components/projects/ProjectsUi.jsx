@@ -2,20 +2,16 @@ import React from 'react';
 import { atom, useAtom } from "jotai";
 
 const pictures = [  
-  "DSC00966",
-  "DSC00983",
-  "DSC01011",
-  "DSC01040",
-  "DSC01064",
-  "DSC01071",
-  "DSC01103",
-  "DSC01145",
-  "DSC01420",
-  "DSC01461",
-  "DSC01489",
-  "DSC02031",
-  "DSC02064",
-  "DSC02069",
+  "Pizza_store_1",
+  "Pizza_store_2",
+  "Uber_clone_1",
+  "Uber_clone_2",
+  "Gym_app",
+  "Gym_app_2",
+  "E-commerce_shop",
+  "E-commerce_shop_2",
+  "Restaurant",
+  "Restaurant_1"  
 ];
 
 export const pageAtom = atom(0);
@@ -45,7 +41,7 @@ const ProjectsUi = () => {
     <main className="w-full h-full pointer-events-none select-none z-10 fixed inset-0 flex justify-between flex-col">
       <div  />
       <div className="w-full overflow-auto pointer-events-auto flex justify-center">
-        <div className="overflow-auto flex items-center gap-4 max-w-full p-10">
+        <div className="overflow-auto flex flex-wrap items-center gap-4 max-w-full p-10">
           {[...pages].map((_, index) => (
             <button
               key={index}

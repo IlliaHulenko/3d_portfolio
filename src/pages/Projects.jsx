@@ -5,7 +5,6 @@ import { Suspense } from "react";
 import ProjectsExp from '../components/projects/ProjectsExp';
 import ProjectsUi from '../components/projects/ProjectsUi';
 
-
 const Projects = () => {
   return (
     <div className="prosjects-container">

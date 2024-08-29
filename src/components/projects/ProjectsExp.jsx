@@ -3,6 +3,7 @@ import { Environment, Float, OrbitControls } from "@react-three/drei";
 import Book from './Book';
 
 const ProjectsExp = () => {
+
   return (
     <>
       <Float
@@ -11,7 +12,7 @@ const ProjectsExp = () => {
         speed={2}
         rotationIntensity={2}
       >
-        <Book />
+        <Book  />
       </Float>
       <OrbitControls />
       <Environment preset="studio"></Environment>
