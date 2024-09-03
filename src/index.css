@@ -23,7 +23,7 @@ body:has(.card[data-color="green"]:hover) {
 
 @layer utilities {
   .max-container {
-    @apply max-w-5xl mx-auto sm:p-16 pb-12 !pt-[126px] px-8 min-h-[calc(100vh-80px)];
+    @apply max-w-6xl mx-auto sm:pt-16 sm:pb-8 pb-8 !pt-[126px] px-8 min-h-[calc(100vh-80px)];
   }
 
   .head-text {
@@ -76,6 +76,10 @@ body:has(.card[data-color="green"]:hover) {
 
   .cta-text {
     @apply text-black-500 font-extrabold flex-1 text-3xl max-md:text-center;
+  }
+
+  .keys-container{
+    @apply absolute top-[calc(20svh-80px)] p-2 left-2 flex flex-col items-center justify-center gap-4 z-10
   }
 }
 
@@ -182,6 +186,45 @@ body:has(.card[data-color="green"]:hover) {
     0.65vmin 1vmin #d2e4ff, 1vmin 0.65vmin #d2e4ff;
 }
 
+/* Keybords key styles */
+
+.keyboard-key{
+  position: relative;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;  
+  border-radius: 10px;
+  padding: 8px 15px;  
+  background: linear-gradient(180deg, #282828, #202020);
+  box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+  inset 0 -8px 8px rgba(0, 0, 0, 0.25),
+  0 0 0 0 2px rgba(0, 0, 0, 0.75), 10px 20px 25px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.keyboard-key::before{
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  bottom: 14px;
+  right: 12px;
+  background: linear-gradient(90deg, #232323, #4a4a4a);
+  border-radius: 10px;
+  box-shadow: -10px -10px 10px rgba(255, 255, 255, 0.25), 10px 5px 10px rgba(0, 0, 0, 0.15);
+  border-left: 1px solid #0004;
+  border-bottom: 1px solid #0004;
+  border-top: 1px solid #0009;
+}
+
+.keyboard-key i{
+  position: relative;
+  color: #fff;
+  font-size: 1.5rem;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
 /* Pages 'Projects' styles */
 .prosjects-container{
   width: 100vw;
@@ -200,7 +243,7 @@ body:has(.card[data-color="green"]:hover) {
 
 .hamburger-menu{
   height: 3rem;
-  width: 3rem;
+  width: 3rem;  
   margin-right: auto;
   position: relative;
   display: none;
@@ -209,7 +252,7 @@ body:has(.card[data-color="green"]:hover) {
 }
 
 .hamburger-menu span{
-  height: 0.4rem;
+  height: 0.2rem;
   width: 100%;
   background: linear-gradient(45deg, #00c6ff, #0072ff);
   border-radius: 1.5rem;
@@ -244,10 +287,11 @@ body:has(.card[data-color="green"]:hover) {
   transition: ease-in-out 0.5s;
 }
 
-.side-panel{
+.side-panel{  
   display: flex;
   flex-direction: column;
   position: absolute;
+  opacity: 0;
   top: 0;
   left: 0;
   width: 80%;
@@ -258,21 +302,17 @@ body:has(.card[data-color="green"]:hover) {
   justify-content: center;
   gap: 2rem;
   z-index: 5;  
-  border-radius: 0 0 1rem 0;  
-  transition: cubic-bezier(0.215, 0.610, 0.355, 1) 1s;
-  /* animation: side-panel 0.5s ease-in-out linear; */
+  border-radius: 0 0 1rem 0;
+  animation: side-panel 0.5s ease-in-out 1 forwards;
 }
 
 @keyframes side-panel {
   0%{
     transform: translateX(-100%);
-    opacity: 0;
   }
   100%{
     transform: translateX(0);
-    opacity: 0.7;
   }
-  
 }
 
 .links-text{
@@ -305,6 +345,10 @@ body:has(.card[data-color="green"]:hover) {
   }
 }
 
+.keys-hidden{
+  display: none;  
+}
+
 /* Timeline componet's styles */
 .timeline {
   position: relative;
@@ -316,14 +360,33 @@ body:has(.card[data-color="green"]:hover) {
   content: '';
   position: absolute;
   width: 6px;
-  height: 100%;
+  height: 150%;
   background: radial-gradient(circle at 10% 20%, rgb(3, 235, 255) 0%, rgb(152, 70, 242) 100.2%);
   top: 0;  
   left: 50%;
-  margin-left: -3px;
+  margin-left: -0.4rem;
   z-index: -1;
   animation: moveline linear;
-  animation-timeline: view();  
+  animation-timeline: view();   
+}
+
+@keyframes moveline {
+  0%{
+    height: 0;
+    opacity: 0;
+  }
+  10%{
+    height: 10%;
+    opacity: 0.2;
+  }
+  20%{
+    height: 10%;
+    opacity: 0.2;
+  }
+  100%{
+    height: 120%;
+    opacity: 1;
+  }
 }
 
 .container{  
@@ -334,6 +397,21 @@ body:has(.card[data-color="green"]:hover) {
   animation: movedown-left ease-in-out;
   animation-timeline: view();
   animation-range: entry 10% cover 90%;
+}
+
+@keyframes movedown-left {
+  0%{
+    opacity: 0;
+    transform: translateX(-7rem);
+  }
+  50%{
+    opacity: 0.7;
+    transform: translateX(-3rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .container img{  
@@ -357,7 +435,22 @@ body:has(.card[data-color="green"]:hover) {
   padding-right: 0;
   animation: movedown-right linear;
   animation-timeline: view();
-  animation-range: entry 40% cover 60%;
+  animation-range: entry 40% cover 70%;
+}
+
+@keyframes movedown-right {
+  0%{
+    opacity: 0.3;
+    transform: translateX(10rem);
+  }
+  50%{
+    opacity: 0.7;
+    transform: translateX(2rem);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .container--right img{
@@ -382,51 +475,32 @@ body:has(.card[data-color="green"]:hover) {
   margin-bottom: 1rem;
 }
 
-@keyframes moveline {
-  0%{
-    height: 0;
-  }
-  50%{
-    height: 50%;
-  } 
-  100%{
-    height: 170%;
-  }
-}
 
-@keyframes movedown-left {
-  0%{
-    opacity: 0.3;
-    transform: translateX(-7rem);
-  }
-  50%{
-    opacity: 0.7;
-    transform: translateX(-3rem);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+@media screen and (max-width: 760px) {  
 
-@keyframes movedown-right {
-  0%{
-    opacity: 0.3;
-    transform: translateX(10rem);
-  }
-  100%{
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+  /* Keybords key styles */
 
-@media screen and (max-width: 760px) {
-  
+  .keyboard-key{  
+    width: 3rem;
+    height: 3rem;  
+    border-radius: 10px;
+    padding: 4px 8px;  
+    background: linear-gradient(180deg, #282828, #202020);
+    box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25),
+    0 0 0 0 2px rgba(0, 0, 0, 0.75), 10px 20px 25px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+
+  .keyboard-key i{  
+    font-size: 0.9rem;  
+  }
+
   .timeline{
     margin: 3rem auto;
   }
   .timeline::after{
-    left: 27px;
+    left: 1.5rem;
   }
   .container{
     width: 100%;
@@ -454,7 +528,7 @@ body:has(.card[data-color="green"]:hover) {
   }
   
   .container--right{
-    animation-range: entry 40% cover 100%;
+    animation-range: entry 30% cover 100%;
   }  
 
   @keyframes movedown-left {
@@ -475,7 +549,11 @@ body:has(.card[data-color="green"]:hover) {
   @keyframes movedown-right {
     0%{
       opacity: 0.3;
-      transform: translateX(4rem);
+      transform: translateX(4rem);      
+    }
+    50%{
+      opacity: 0.7;
+      transform: translateX(1rem);
     }
     100%{
       opacity: 1;
@@ -485,15 +563,19 @@ body:has(.card[data-color="green"]:hover) {
 
   @keyframes moveline {
     0%{
-      height: -2rem;
+      height: 0;
       opacity: 0;
     }
     10%{
       height: 10%;
-      opacity: 0.5;
+      opacity: 0.2;
+    }
+    20%{
+      height: 10%;
+      opacity: 0.2;
     }
     100%{
-      height: 115%;
+      height: 120%;
       opacity: 1;
     }
   }

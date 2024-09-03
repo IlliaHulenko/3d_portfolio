@@ -1,17 +1,35 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState, useRef } from 'react'
+import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+
+    const hamburgerRef = useRef();
+    const menuRef = useRef();
+
+    useEffect(() => {
+        let handler = document.addEventListener('click', (e) => {
+            if(e.target !== menuRef.current && e.target !== hamburgerRef.current) {
+                setIsOpen(false);
+            }
+        });
+        return () => {
+            document.removeEventListener('click', handler);
+        }
+    }, [])
 
   return (
     <header className='header'>
         <NavLink to='/' className="w-10 h-10 rounded-lg bg-white 
-            hidden sm:flex items-center justify-center font-bold shadow-md">
-            <p className='blue-gradient_text'>IG</p>
+            hidden sm:flex items-center justify-center font-bold shadow-md">            
+            <img 
+                src='../../public/main_photo.png' alt="Elijah's foto"
+                className='w-9 h-9 rounded-full bg-transparent'
+            />            
         </NavLink>
-        <nav className='hidden sm:flex text-lg gap-7 font-medium'>
+        <nav className='hidden sm:flex text-2xl gap-7 font-medium'>
             <NavLink to="/about" className={({isActive}) => isActive ? 'text-blue-500' : 'text-black'}>
                 About
             </NavLink>
@@ -22,17 +40,18 @@ const Navbar = () => {
                 Contact
             </NavLink>
         </nav>
-
+        
         <div 
             className={`hamburger-menu ${isOpen ? 'active' : ''}`} 
-            onClick={() => setIsOpen(prev => !prev)}
+            onClick={() => setIsOpen(prev => !prev)}  
+            ref={hamburgerRef}              
         >
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </div>   
         { isOpen && (
-            <div className='side-panel'>
+            <div className='side-panel' ref={menuRef}>
                 <NavLink to='/' className={({isActive}) => isActive ? 'links' : ''}>
                     <p className='links-text'>Home</p>
                 </NavLink>

@@ -36,7 +36,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className='py-16'>
+      <div className='pt-16 pb-8'>
           <h3 className='subhead-text'>
             My Work Experience
           </h3>

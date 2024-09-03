@@ -106,16 +106,17 @@ export const skills = [
 
 export const experiences = [
     {
-        title: "Junior Full Stack Developer",
+        title: "React.js/Node.js Full Stack Developer",
         company_name: "Softtek",
         icon: softtek,
         iconBg: "#accbe1",
         date: "Septiember 2022 - July 2024",
         points: [
-            "Contributed to the development of an enterprise services platform. Worked with Angular 14+ for front-end development and used Spring Boot 3 for back-end services. Developed and improved platform components,contributing to a 30% improvement in page load times.",
-            "Improving the efficiency and data management of the platform. Integrating RxJS to manage state and handle asynchronous operations effectively. Resulting in a reduction in errors related to state management, asynchronous data handling and memory leaks.",
-            "Optimising the performance and maintainability of platform components. Refactoring and optimising legacy code components to improve performance. Leading to a 35% decrease in application load times and smoother platform performance overall.",
-            "Ensured code reliability and functionality. Creating and maintaining unit and integration tests using Angular testing tools such as Jasmine. Leading to a 35% reduction in bugs found during QA and more stable platform.",
+            "Developed and maintained scalable, responsive web applications as measured by a 20% reduction in page load times, by doing detailed component-based architecture using React and TypeScript, and integrating with RESTful APIs.",
+            "Was optimizing the performance and maintainability of React components as measured by reduced development time and improved code quality by implementing reusable custom hooks, HOC’s, utilizing state management libraries like Redux. Leading to a 30% decrease in application load times and smoother platform performance overall.",
+            "Ensured code reliability and functionality. Creating and maintaining tests using JavaScript test runners such as Jest. Leading to a 20% reduction in bugs found during QA and a more stable platform.",
+            "Assisted in the creation and integration of RESTful APIs. I was using Node.js to develop API endpoints and manage data flow. I also used ExpressJS middleware and services like Axios for efficient API communication. Was managing and creating queries for the relational database MySQL. Improved system efficiency, contributing to a reduction in data recovery times by 10%. ",
+            "Worked in one team with senior developers, designers and QA teams. Participated in code reviews, and agile sprints by Scrum methodology. Helped maintain a high standard of code quality by contributing to code reviews, following established coding standards and conventions, writing clear and concise code, and staying updated with the latest React trends and best practices."
         ],
     },
     {

@@ -18,7 +18,7 @@ const Home = () => {
     let screenPosition = null;    
 
     if(window.innerWidth < 760){
-      screenScale = [0.5, 0.5, 0.5]
+      screenScale = [0.7, 0.7, 0.7]
     } else {
       screenScale = [1, 1, 1]
     }
@@ -35,9 +35,9 @@ const Home = () => {
   const adjustPlaneForScreenSize = () => {
     let screenScale, screenPosition;    
 
-    if(window.innerWidth < 760){
-      screenScale = [1, 1, 1]
-      screenPosition = [0, -1.5, 0]
+    if(window.innerWidth <= 760 ){
+      screenScale = [1.2, 1.2, 1.2]
+      screenPosition = [0, -1.7, 0]
     } else {
       screenScale = [3, 3, 3]
       screenPosition = [0, -5, -4]
@@ -52,10 +52,20 @@ const Home = () => {
   return (
     <section className='w-full h-screen realtive'>
       
-      <div className='absolute top-28 left-0 right-0 z-10 flex items-center justify-center'>
+      <div className='absolute top-28 left-0 right-0 z-20 flex items-center justify-center'>
         {currentStage && <HomeInfo currentStage={currentStage} />}
       </div>
 
+      <div className={`keys-container ${isRotating ? 'keys-hidden' : ''}`}>
+        <h3 className='text-xl sm:text-lg'>To move the plane PRESS</h3>
+        <div className='flex flex-row gap-4'>
+          <span className='keyboard-key'><i>A</i></span>
+          <span className='keyboard-key'><i>D</i></span>
+        </div>
+        <h3 className='text-xl sm:text-lg'>OR</h3>
+        <h3 className='text-xl sm:text-lg'>GRAB the ship</h3>
+      </div>
+      
       <Canvas 
         className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{near: 0.1, far: 1000}}
