@@ -10,7 +10,8 @@ import Ecommerce_shop from "../../../public/textures/Ecommerce_shop.jpg";
 import Ecommerce_shop_2 from "../../../public/textures/Ecommerce_shop_2.jpg";
 import Restaurant from "../../../public/textures/Restaurant.jpg";
 import Restaurant_1 from "../../../public/textures/Restaurant_1.jpg";
-import book_cover from "../../../public/textures/book_cover.jpg";
+import Book_cover from "../../../public/textures/Book_cover.jpg";
+import Book_back from "../../../public/textures/Book_back.jpg";
 
 const pictures = [  
   {Pizza_store_1},
@@ -28,7 +29,7 @@ const pictures = [
 export const pageAtom = atom(0);
 export const pages = [
   {
-    front: {book_cover},
+    front: {Book_cover},
     back: pictures[0],
   },
 ];
@@ -41,7 +42,7 @@ for (let i = 1; i < pictures.length - 1; i += 2) {
 
 pages.push({
   front: pictures[pictures.length - 1],
-  back: "book-back",
+  back: {Book_back},
 });
 
 const ProjectsUi = () => {
