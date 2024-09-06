@@ -25,7 +25,7 @@ const Navbar = () => {
         <NavLink to='/' className="w-10 h-10 rounded-lg bg-white 
             hidden sm:flex items-center justify-center font-bold shadow-md">            
             <img 
-                src='../../public/main_photo.png' alt="Elijah's foto"
+                src='main_photo.png' alt="Elijah's foto"
                 className='w-9 h-9 rounded-full bg-transparent'
             />            
         </NavLink>

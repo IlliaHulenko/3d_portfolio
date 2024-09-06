@@ -6,6 +6,7 @@ import Sky from '../models/Sky.jsx'
 import Bird from '../models/Bird.jsx'
 import Plane from '../models/Plane.jsx'
 import HomeInfo from '../components/HomeInfo.jsx'
+import { useEffect } from 'react'
 
 
 const Home = () => {
@@ -49,6 +50,14 @@ const Home = () => {
   const [isBalloonScale, isBalloonPosition] = adjustBalloonForScreenSize();
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
 
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 10000);
+  }, [])
+
   return (
     <section className='w-full h-screen realtive'>
       
@@ -56,15 +65,18 @@ const Home = () => {
         {currentStage && <HomeInfo currentStage={currentStage} />}
       </div>
 
-      <div className={`keys-container ${isRotating ? 'keys-hidden' : ''}`}>
-        <h3 className='text-xl sm:text-lg'>To move the plane PRESS</h3>
-        <div className='flex flex-row gap-4'>
-          <span className='keyboard-key'><i>A</i></span>
-          <span className='keyboard-key'><i>D</i></span>
+      {isVisible && (
+        <div className={`keys-container ${isRotating ? 'keys-hidden' : ''}`}>
+          <h3 className='text-xl max-sm:text-base'>PRESS</h3>
+          <div className='flex flex-row gap-4'>
+            <span className='keyboard-key'><i>&#8678;</i></span>
+            <span className='keyboard-key'><i>&#8680;</i></span>
+          </div>
+          <h3 className='text-xl max-sm:text-base'>OR</h3>
+          <h3 className='text-xl max-sm:text-base'>GRAB the ship</h3>
         </div>
-        <h3 className='text-xl sm:text-lg'>OR</h3>
-        <h3 className='text-xl sm:text-lg'>GRAB the ship</h3>
-      </div>
+      )}
+      
       
       <Canvas 
         className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
