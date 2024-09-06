@@ -1,4 +1,4 @@
-import { useCursor, useHelper, useTexture } from '@react-three/drei';
+import { useCursor, useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import React, { useMemo, useRef, useState } from 'react';
 import { 
@@ -6,7 +6,6 @@ import {
   BoxGeometry,
   Color,
   Float32BufferAttribute,
-  MathUtils,
   MeshStandardMaterial,
   Skeleton,
   SkinnedMesh,
@@ -18,6 +17,7 @@ import {
  import { pageAtom, pages } from "./ProjectsUi";
  import { easing } from "maath";
 import { useAtom } from 'jotai';
+import book_cover_roughness from "../../../public/textures/book_cover_roughness.jpg";
 
 const easingFactor = 0.5;
 const easingFactorFold = 0.3; 
@@ -83,17 +83,17 @@ const pageMaterials = [
   }),
 ];
 pages.forEach((page) => {
-  useTexture.preload(`/textures/${page.front}.jpg`);
-  useTexture.preload(`/textures/${page.back}.jpg`);
-  useTexture.preload(`/textures/book-cover-roughness.jpg`);  
+  useTexture.preload(`/textures/${page.front}`);
+  useTexture.preload(`/textures/${page.back}`);
+  useTexture.preload(`/textures/${book_cover_roughness}`);  
 })
 const Page = ({number, front, back, page, bookOpened, bookClosed,  ...props}) => {
 
   const [picture, picture2, pictureRoughness] = useTexture([
-    `/textures/${front}.jpg`,
-    `/textures/${back}.jpg`,
+    `/textures/${front}`,
+    `/textures/${back}`,
     ...(number === 0 || number === pages.lenght - 1
-      ?[`/textures/book-cover-roughness.jpg`]
+      ?[`/textures/${book_cover_roughness}`]
       :[]),
   ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;

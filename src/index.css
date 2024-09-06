@@ -228,8 +228,7 @@ body:has(.card[data-color="green"]:hover) {
 /* Pages 'Projects' styles */
 .prosjects-container{
   width: 100vw;
-  height: 100svh;  
-  background-image: url("../textures/clouds.jpg");
+  height: 100svh;    
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

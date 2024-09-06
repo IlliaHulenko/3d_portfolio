@@ -1,23 +1,34 @@
 import React from 'react';
 import { atom, useAtom } from "jotai";
+import Pizza_store_1 from "../../../public/textures/Pizza_store_1.jpg";
+import Pizza_store_2 from "../../../public/textures/Pizza_store_2.jpg";
+import Uber_clone_1 from "../../../public/textures/Uber_clone_1.jpg";
+import Uber_clone_2 from "../../../public/textures/Uber_clone_2.jpg";
+import Gym_app from "../../../public/textures/Gym_app.jpg";
+import Gym_app_2 from "../../../public/textures/Gym_app_2.jpg";
+import Ecommerce_shop from "../../../public/textures/Ecommerce_shop.jpg";
+import Ecommerce_shop_2 from "../../../public/textures/Ecommerce_shop_2.jpg";
+import Restaurant from "../../../public/textures/Restaurant.jpg";
+import Restaurant_1 from "../../../public/textures/Restaurant_1.jpg";
+import book_cover from "../../../public/textures/book_cover.jpg";
 
 const pictures = [  
-  "Pizza_store_1",
-  "Pizza_store_2",
-  "Uber_clone_1",
-  "Uber_clone_2",
-  "Gym_app",
-  "Gym_app_2",
-  "E-commerce_shop",
-  "E-commerce_shop_2",
-  "Restaurant",
-  "Restaurant_1"  
+  {Pizza_store_1},
+  {Pizza_store_2},
+  {Uber_clone_1},
+  {Uber_clone_2},
+  {Gym_app},
+  {Gym_app_2},
+  {Ecommerce_shop},
+  {Ecommerce_shop_2},
+  {Restaurant},
+  {Restaurant_1}  
 ];
 
 export const pageAtom = atom(0);
 export const pages = [
   {
-    front: "book-cover",
+    front: {book_cover},
     back: pictures[0],
   },
 ];
