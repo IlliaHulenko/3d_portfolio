@@ -10,8 +10,8 @@ import Ecommerce_shop from "../../../public/textures/Ecommerce_shop.jpg";
 import Ecommerce_shop_2 from "../../../public/textures/Ecommerce_shop_2.jpg";
 import Restaurant from "../../../public/textures/Restaurant.jpg";
 import Restaurant_1 from "../../../public/textures/Restaurant_1.jpg";
-import book_cover from "../../../public/textures/book_cover.jpg";
-import book_back from "../../../public/textures/book_back.jpg";
+import book_cover from "../../../src/images/book_cover.jpg";
+import book_back from "../../../src/images/book_back.jpg";
 
 const pictures = [  
   {Pizza_store_1},

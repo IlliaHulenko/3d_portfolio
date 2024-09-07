@@ -17,7 +17,7 @@ import {
  import { pageAtom, pages } from "./ProjectsUi";
  import { easing } from "maath";
 import { useAtom } from 'jotai';
-import book_cover_roughness from "../../../public/textures/book_cover_roughness.jpg";
+import book_cover_roughness from "../../../src/images/book_cover_roughness.jpg";
 
 const easingFactor = 0.5;
 const easingFactorFold = 0.3; 
