@@ -4,7 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import ProjectsExp from '../components/projects/ProjectsExp';
 import ProjectsUi from '../components/projects/ProjectsUi';
-import clouds from "../../public/textures/clouds.jpg";
+import clouds from "../../src/images/textures/clouds.jpg";
 
 const Projects = () => {
   return (

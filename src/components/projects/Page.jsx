@@ -17,7 +17,7 @@ import {
  import { pageAtom, pages } from "./ProjectsUi";
  import { easing } from "maath";
 import { useAtom } from 'jotai';
-import book_cover_roughness from "../../../src/images/book_cover_roughness.jpg";
+import Book_cover_roughness from "../../../src/images/textures/Book_cover_roughness.jpg";
 
 const easingFactor = 0.5;
 const easingFactorFold = 0.3; 
@@ -83,17 +83,17 @@ const pageMaterials = [
   }),
 ];
 pages.forEach((page) => {
-  useTexture.preload(`/textures/${page.front}`);
-  useTexture.preload(`/textures/${page.back}`);
-  useTexture.preload(`/textures/${book_cover_roughness}`);  
+  useTexture.preload(page.front);
+  useTexture.preload(page.back);
+  useTexture.preload(Book_cover_roughness);
 })
 const Page = ({number, front, back, page, bookOpened, bookClosed,  ...props}) => {
 
   const [picture, picture2, pictureRoughness] = useTexture([
-    `/textures/${front}`,
-    `/textures/${back}`,
+    front,
+    back,
     ...(number === 0 || number === pages.lenght - 1
-      ?[`/textures/${book_cover_roughness}`]
+      ?[`${Book_cover_roughness}`]
       :[]),
   ]);
   picture.colorSpace = picture2.colorSpace = SRGBColorSpace;
@@ -210,7 +210,7 @@ const Page = ({number, front, back, page, bookOpened, bookClosed,  ...props}) =>
       delta
       );
     };    
-  });
+  });  
 
   return (
     <group {...props} ref={group}
