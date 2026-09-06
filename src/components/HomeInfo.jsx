@@ -36,7 +36,7 @@ const renderContent = {
     ),
     4:(
         <InfoBox
-            text="I am a Full Stack Developer with 3+ years of experience working both independently and in teams."
+            text="I am a Full Stack Developer with 5+ years of experience working both independently and in teams."
             link='/about'
             btnText="About me"
         />
