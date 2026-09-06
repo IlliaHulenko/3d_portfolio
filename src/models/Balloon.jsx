@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { a } from '@react-spring/three'
@@ -18,21 +18,21 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF(balloonScene);
 
-  const { actions } = useAnimations(animations, group);  
+  const { actions } = useAnimations(animations, group);
 
   const handlePointerDown = (e) => {
     e.stopPropagation();
     e.preventDefault();
     setIsRotating(true);
-    
+
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    lastX.current = clientX;    
-  } 
+    lastX.current = clientX;
+  }
 
   const handlePointerUp = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    setIsRotating(false);     
+    setIsRotating(false);
   }
   const handlePointerMove = (e) => {
     e.stopPropagation();
@@ -44,8 +44,8 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
 
       group.current.rotation.z += delta * 0.01 * Math.PI;
       lastX.current = clientX;
-      rotationSpeed.current = delta * 0.01 * Math.PI;      
-    }    
+      rotationSpeed.current = delta * 0.01 * Math.PI;
+    }
   }
 
   const handleKeyDown = (e) => {
@@ -73,10 +73,10 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
       if(Math.abs(rotationSpeed.current) < 0.001){
         rotationSpeed.current = 0;
       }
-      group.current.rotation.z += rotationSpeed.current;      
-      
+      group.current.rotation.z += rotationSpeed.current;
+
     } else {
-      const rotation = group.current.rotation.z;       
+      const rotation = group.current.rotation.z;
       const normalizedRotation =
         ((rotation % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
 
@@ -107,8 +107,8 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
     canvas.addEventListener("pointermove", handlePointerMove);
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
-    
-    actions.Scene.play();   
+
+    actions.Scene.play();
 
     return () => {
       canvas.removeEventListener("pointerdown", handlePointerDown);
@@ -119,14 +119,14 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
     }
 
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove, actions, ballonCurrentAnimation]);
-  
+
   return (
-    <a.group ref={group} {...props}>      
+    <a.group ref={group} {...props}>
       <mesh
         name="balloon"
       />
       <mesh
-        name="armature_balloon"        
+        name="armature_balloon"
         >
         <mesh name="Object_6">
           <primitive object={nodes._rootJoint} />
@@ -152,7 +152,7 @@ const Balloon = ({isRotating, setIsRotating, setCurrentStage, ...props}) => {
             name="Object_8"
           />
         </mesh>
-      </mesh>              
+      </mesh>
     </a.group>
   )
 }

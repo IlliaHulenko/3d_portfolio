@@ -1,4 +1,4 @@
-import {React, Suspense, useState} from 'react'
+import {Suspense, useState} from 'react'
 import { Canvas } from '@react-three/fiber'
 import Loader from '../components/Loader.jsx'
 import Balloon from '../models/Balloon.jsx'
@@ -13,10 +13,10 @@ const Home = () => {
 
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1);
-  
+
   const adjustBalloonForScreenSize = () => {
-    let screenScale = null; 
-    let screenPosition = null;    
+    let screenScale = null;
+    let screenPosition = null;
 
     if(window.innerWidth < 760){
       screenScale = [0.7, 0.7, 0.7]
@@ -34,7 +34,7 @@ const Home = () => {
   }
 
   const adjustPlaneForScreenSize = () => {
-    let screenScale, screenPosition;    
+    let screenScale, screenPosition;
 
     if(window.innerWidth <= 760 ){
       screenScale = [1.2, 1.2, 1.2]
@@ -60,7 +60,7 @@ const Home = () => {
 
   return (
     <section className='w-full h-screen realtive'>
-      
+
       <div className='absolute top-28 left-0 right-0 z-20 flex items-center justify-center'>
         {currentStage && <HomeInfo currentStage={currentStage} />}
       </div>
@@ -76,9 +76,9 @@ const Home = () => {
           <h3 className='text-xl max-sm:text-base'>GRAB the ship</h3>
         </div>
       )}
-      
-      
-      <Canvas 
+
+
+      <Canvas
         className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
         camera={{near: 0.1, far: 1000}}
       >
@@ -88,11 +88,11 @@ const Home = () => {
           <pointLight />
           <spotLight />
           <hemisphereLight skyColor="#b1e6ff" groundColor="#000000" intensity={1}/>
-          
+
           <Bird />
           <Sky isRotating={isRotating} />
-          
-          <Balloon 
+
+          <Balloon
             scale={isBalloonScale}
             position={isBalloonPosition}
             rotation={[-1.78, -6.3, 0]}
@@ -101,7 +101,7 @@ const Home = () => {
             setCurrentStage={setCurrentStage}
           />
 
-          <Plane 
+          <Plane
             isRotating={isRotating}
             scale={planeScale}
             position={planePosition}

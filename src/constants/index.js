@@ -1,24 +1,26 @@
 import { softtek } from "../images";
-import {    
-    contact,
-    css,
-    express,
-    freelance,
-    git,
-    github,
-    html,
-    javascript,
-    linkedin,
-    mongodb,
-    motion,
-    mui,
-    nextjs,
-    nodejs,
-    react,
-    redux,
-    sass,
-    tailwindcss,    
-    typescript
+import { inetum } from "../images";
+import { overonyx } from "../images";
+
+import {
+  contact,
+  css,
+  express,
+  git,
+  github,
+  html,
+  javascript,
+  linkedin,
+  mongodb,
+  motion,
+  mui,
+  nextjs,
+  nodejs,
+  react,
+  redux,
+  sass,
+  tailwindcss,
+  typescript
 } from "../assets/icons";
 
 export const skills = [
@@ -107,29 +109,43 @@ export const skills = [
 export const experiences = [
     {
         title: "React.js/Node.js Full Stack Developer",
-        company_name: "Softtek",
-        icon: softtek,
+        company_name: "Inetum Norte",
+        icon: inetum,
         iconBg: "#accbe1",
-        date: "Septiember 2022 - July 2024",
+        date: "April 2025 - October 2025",
         points: [
             "Developed and maintained scalable, responsive web applications as measured by a 20% reduction in page load times, by doing detailed component-based architecture using React and TypeScript, and integrating with RESTful APIs.",
-            "Was optimizing the performance and maintainability of React components as measured by reduced development time and improved code quality by implementing reusable custom hooks, HOC’s, utilizing state management libraries like Redux. Leading to a 30% decrease in application load times and smoother platform performance overall.",
-            "Ensured code reliability and functionality. Creating and maintaining tests using JavaScript test runners such as Jest. Leading to a 20% reduction in bugs found during QA and a more stable platform.",
-            "Assisted in the creation and integration of RESTful APIs. I was using Node.js to develop API endpoints and manage data flow. I also used ExpressJS middleware and services like Axios for efficient API communication. Was managing and creating queries for the relational database MySQL. Improved system efficiency, contributing to a reduction in data recovery times by 10%. ",
-            "Worked in one team with senior developers, designers and QA teams. Participated in code reviews, and agile sprints by Scrum methodology. Helped maintain a high standard of code quality by contributing to code reviews, following established coding standards and conventions, writing clear and concise code, and staying updated with the latest React trends and best practices."
+            "Cut memory consumption and accelerated page load speeds, measured via performance profiling tools, by deploying code splitting, lazy loading, memoization, and pruning re-renders with useCallback and useMem",
+            "Slashed QA defect rates, tracked directly in defect logs, by authoring comprehensive Jest unit tests for React components to catch logic flaw",
+            "Enabled synchronous SAP data exchange, confirmed through reduced API latency, by architecting Node.js and Express.js REST endpoints to replace legacy database queries.",
+            "Lowered CI/CD integration errors by 40%, measured through failed pipeline logs, by standardizing pull request documentation and automating Jenkins deployments across dev and QA branches."
         ],
     },
     {
-        title: "React.js/React Native Developer",
-        company_name: "Freelance",
-        icon: freelance,
-        iconBg: "#fbc3bc",
-        date: "November 2020 - March 2022",
+        title: "React.js/Node.js Full Stack Developer",
+        company_name: "Softtek",
+        icon: softtek,
+        iconBg: "#accbe1",
+        date: "January 2022 - July 2024",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+          "Shortened feature development cycles, measured by sprint velocity tracking, by engineering reusable custom hooks and HOCs while stabilizing global state through Redux.",
+          "Improved application stability as measured by a reduction in runtime crashes, by implementing the Observer Pattern and robust state management using Redux.",
+          "Boosted platform reliability, tracked through QA bug reports, by authoring and sustaining Jest test suites for core React components to catch regressions early.",
+          "Increased data retrieval efficiency as measured by API response times, by developing optimized RESTful endpoints and middleware using Node.js and Express.js.",
+          "Decreased database bottlenecking as measured by query execution time, by designing and optimizing complex relational queries in MySQL"
+        ],
+    },
+    {
+        title: "Jr Front-End Developer Developed React Native & Web UI",
+        company_name: "Overonix Technologies",
+        icon: overonyx,
+        iconBg: "#fbc3bc",
+        date: "September 2019 - December 2021",
+        points: [
+          "Accelerated app startup by 30%, measured via Cold Start Time benchmarks, through refined React Native rendering pipelines, strategic code-splitting, and optimized native module bridges.",
+          "Drove higher dashboard engagement, tracked in user session analytics, by crafting responsive TradingView charts, balance trackers, and asset visualizers in React for pixel-perfect cross-device rendering.",
+          "Cut feature delivery timelines by 25%, measured against original sprint estimates, by unifying iOS and Android workflows through React Native’s shared architecture and tight cross-functional alignment.",
+          "Expanded platform reach across iOS and Android as measured by an increase in mobile app installs, by developing cross-platform mobile features using React Native.",
         ],
     }
 ];
@@ -150,15 +166,4 @@ export const socialLinks = [
         iconUrl: linkedin,
         link: 'https://www.linkedin.com/in/YourLinkedInUsername',
     }
-];
-
-export const projects = [
-    {
-        // iconUrl: pricewise,
-        // theme: 'btn-back-red',
-        // name: 'Amazon Price Tracker',
-        // description: 'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
-        // link: 'https://github.com/adrianhajdin/pricewise',
-    },
-    
 ];
